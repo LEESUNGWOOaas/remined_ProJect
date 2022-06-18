@@ -6,8 +6,9 @@ import com.level.vo.UserVO;
 
 public interface UserService {
 
-	List<UserVO> selectUserList(UserVO userVO)throws Exception;
+	List<UserVO> selectUserList(UserVO userVO) throws Exception;
 
-	UserVO selectUserById(String userId)throws Exception;
+	UserVO selectUserById(String userId) throws Exception;
+
 
 }
