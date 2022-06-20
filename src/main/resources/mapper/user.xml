@@ -36,6 +36,22 @@
         	</if>
 	</select>
 	
+	
+	<select id="selectUser" parameterType="userVO" resultType="userVO">
+		select user_no,
+			   user_id,
+			   user_name,
+			   pwd,
+			   email,
+			   gender,
+			   delete_yn,
+			   insert_date
+		
+		from   user
+		
+		where  user_no=#{userNo}
+	</select>
+	
 	<insert id="insert" parameterType="userVO" useGeneratedKeys="true" keyProperty="userNo">
 		insert	user
 		
@@ -83,5 +99,22 @@
 		
 		where 1=1
 		and   user_id =#{userId}
+	</select>
+	
+	<select id="selectUserByUserNo" parameterType="int" resultType="userVO">
+		select user_no,
+			   user_id,
+			   user_name,
+			   pwd,
+			   email,
+			   gender,
+			   delete_yn,
+			   insert_date,
+			   hash
+		
+		from   user
+		
+		where 1=1
+		and   user_no =#{userNo}
 	</select>
 </mapper>

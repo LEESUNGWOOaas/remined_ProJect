@@ -6,6 +6,8 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("userVO")
 public class UserVO extends CommonVO{
+	
+	
 	private int userNo;
 	private String userId;
 	private String userName;

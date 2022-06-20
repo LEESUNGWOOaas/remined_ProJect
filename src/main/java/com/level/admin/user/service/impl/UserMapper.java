@@ -15,4 +15,13 @@ public interface UserMapper {
 	
 	int selectUserListCount(UserVO userVO)throws Exception;
 
+	UserVO selectUser(UserVO userVO)throws Exception;
+	
+	int insert(UserVO userVO)throws Exception;
+
+	int update(UserVO userVO)throws Exception;
+
+	int delete(UserVO userVO)throws Exception;
+	
+	UserVO selectUserByUserNo(int userNo)throws Exception;
 }

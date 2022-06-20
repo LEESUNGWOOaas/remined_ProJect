@@ -10,5 +10,11 @@ public interface UserService {
 
 	UserVO selectUserById(String userId) throws Exception;
 
+	UserVO selectUser(UserVO userVO)throws Exception;
+
+	int insert(UserVO userVO)throws Exception;
+
+	int delete(UserVO userVO)throws Exception;
+
 
 }

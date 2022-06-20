@@ -9,7 +9,7 @@
 				   
 			from board_info
 			
-			where board_info_no = #{boardInfoNo}
+			where board_title = #{boardTitle}
 		</select>
 		
 		<select id="selectBoardInfoList" parameterType="boardInfoVO" resultType="boardInfoVO">

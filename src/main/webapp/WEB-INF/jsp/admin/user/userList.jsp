@@ -10,15 +10,13 @@
     
 <div class="header"> 
 	<h1 class="page-header">
-		 <small>${bbsInfoVO.bbsInfoTitle }</small>
+		 <small>User</small>
 	</h1>
 </div>
 <div id="page-inner"> 
-
 	<div class="row mb-10 ">
 		<div class="col-sm-12 text-right">
-
-			 <a href="form" class="btn btn-sm btn-primary">등록</a><br/>
+			 <a href="userForm" class="btn btn-sm btn-primary">등록</a><br/>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -88,7 +86,7 @@ $("#group_sel").change(function(){
 
 	var params = $('#exposureForm').serialize();
 	$.ajax({
-		url:"/admin/bbs/{BbsinfoVO.bid}/"+bbsNo,
+		url:"/admin/user/{BbsinfoVO}/"+userNo,
 		type:'post',
 		data:params,
 		success:function(response){
