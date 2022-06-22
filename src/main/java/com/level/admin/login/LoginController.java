@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.level.admin.user.service.UserService;
 import com.level.common.util.SHA256Util;
@@ -23,7 +24,7 @@ public class LoginController {
 	
 	@RequestMapping("/admin/login")
 	public String login()throws Exception{
-		if(SessionUtil.isLogin()) return "redirect:/admin";
+		if(SessionUtil.isLogin()) return "redirect:/admin/main";
 		return "admin/login/login";
 	}
 	@RequestMapping("/admin/logout")
@@ -32,18 +33,15 @@ public class LoginController {
 			SessionUtil.removeUser();
 		return "redirect:/admin/login";
 	}
+	@ResponseBody
 	@RequestMapping(value="/admin/login", method=RequestMethod.POST)
 	public Map<String,Object> CheckUser(UserVO memberVO,Model model,HttpSession session)throws Exception{
-		Map<String,Object> resultMap = new HashMap<>();
+		Map<String,Object> resultMap = new HashMap<String, Object>();
 		
 		UserVO userVO=userService.selectUserById(memberVO.getUserId());
 		if(userVO == null||
-				userVO.getDeleteYn().equals('Y')||
+				!userVO.getDeleteYn().equals("N")||
 				!SHA256Util.getEncrypt(memberVO.getPwd(),userVO.getHash()).equals(userVO.getPwd())){
-			  
-			  System.out.println("id : " + userVO.getUserId());
-			  System.out.println("pwd : " + userVO.getPwd());
-
 			  	resultMap.put("result",false);
 			  	resultMap.put("msg","잘못된 정보입니다.");
 		  }else {

@@ -16,7 +16,7 @@ public class UserVO extends CommonVO{
 	private String gender;
 	private String deleteYn;
 	private String hash;
-	
+	private String salt;
 	
 	Timestamp insertDate;
 
@@ -94,6 +94,14 @@ public class UserVO extends CommonVO{
 
 	public void setInsertDate(Timestamp insertDate) {
 		this.insertDate = insertDate;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	

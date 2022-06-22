@@ -53,14 +53,14 @@
 	</select>
 	
 	<insert id="insert" parameterType="userVO" useGeneratedKeys="true" keyProperty="userNo">
-		insert	user
+		insert into	user
 		
-		   set user_no = #{userNo},
-			   user_id = #{userId},
+		   set user_id = #{userId},
 			   user_name = #{userName},
 			   pwd = #{pwd},
 			   email = #{email},
 			   gender = #{gender},
+			   hash = #{hash},
 			   insert_date = now()
 	</insert>
 	
@@ -93,7 +93,9 @@
 			   email,
 			   gender,
 			   delete_yn,
-			   hash
+			   insert_date,
+			   hash,
+			   salt
 		
 		from   user
 		
@@ -110,7 +112,8 @@
 			   gender,
 			   delete_yn,
 			   insert_date,
-			   hash
+			   hash,
+			   salt
 		
 		from   user
 		

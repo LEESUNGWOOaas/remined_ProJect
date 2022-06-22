@@ -13,16 +13,33 @@ import com.level.common.util.SessionUtil;
 
 @Component
 public class AdminInterceptor extends HandlerInterceptorAdapter {
-	/*
-	 * public boolean preHandle(HttpServletRequest request,HttpServletResponse
-	 * response,Object handler)throws Exception { System.out.println("interceptor");
-	 * if(!SessionUtil.isLogin()){ if(BaseUtil.isAjax(request))
-	 * response.sendError(999); else
-	 * response.sendRedirect(request.getContextPath()+"/admin/login");
-	 * 
-	 * return false; }
-	 * 
-	 * return true; }
-	 */
 
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		System.out.println("interceptor");
+		if (!SessionUtil.isLogin()) {
+			if (BaseUtil.isAjax(request))
+				response.sendError(999);
+			else
+				response.sendRedirect(request.getContextPath() + "/admin/login");
+
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

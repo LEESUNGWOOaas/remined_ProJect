@@ -59,7 +59,7 @@
 					
 					<tr>
 						<th>*PassWord</th>
-						<td ><input type="text" name="password" id="password" title="password" class="form-control"  required>${userVO.pwd }</td>
+						<td ><input type="text" name="pwd" id="pwd" title="pwd" class="form-control"  required>${userVO.pwd }</td>
 					</tr>
 					
 					<tr>
@@ -86,11 +86,11 @@
 <script>
 $(function(){
 	activeMenu('/admin/user/userList');
-}
+});
 
 function goList() {
 		var params = fnGetPrevParmas("");
-		fnRedirect("./list");
+		fnRedirect("/admin/user/userList");
 }
 		
 
@@ -103,7 +103,6 @@ function cancel(){
 
 function save(){
 
-	console.log($('#regForm').serialize());
 			//return;
 			var userId = $('#userId').val();
 			var userName = $('#userName').val();

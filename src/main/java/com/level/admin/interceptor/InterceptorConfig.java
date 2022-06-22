@@ -8,14 +8,13 @@ import com.level.admin.interceptor.AdminInterceptor;
 
 @SuppressWarnings("deprecation")
 @Configuration
-public class InterceptorConfig extends WebMvcConfigurerAdapter{
+public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
-	/*
-	 * @Override public void addInterceptors(InterceptorRegistry registry) {
-	 * registry.addInterceptor(new AdminInterceptor())
-	 * .excludePathPatterns("/admin/login") .addPathPatterns("/admin/**");
-	 * 
-	 * }
-	 */
-	 
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new AdminInterceptor()).excludePathPatterns("/admin/login")
+				.addPathPatterns("/admin/**");
+
+	}
+
 }

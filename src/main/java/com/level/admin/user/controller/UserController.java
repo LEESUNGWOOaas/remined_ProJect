@@ -49,7 +49,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/admin/user/save")
 	public Map<String, Object> insert(UserVO userVO)throws Exception{
-		Map<String, Object> resultMap = new HashMap<>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		int result = userService.insert(userVO);
 		if(result >0) {
 			resultMap.put("result",true);
@@ -64,7 +64,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/admin/user/delete")
 	public Map<String, Object> delete(UserVO userVO)throws Exception{
-		Map<String, Object> resultMap= new HashMap<>();
+		Map<String, Object> resultMap= new HashMap<String, Object>();
 		int result = userService.delete(userVO);
 		if(result>0) {
 			resultMap.put("result",true);

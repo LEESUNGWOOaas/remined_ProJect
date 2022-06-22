@@ -69,7 +69,7 @@ $(function(){
 
 function goList() {
 	var params = fnGetPrevParmas("");
-	fnRedirect("./list");
+	fnRedirect("/admin/user/userList");
 }
 
 function goForm(userNo) {
