@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="com.level.admin.board.service.impl.BoardMapper">
-		<select id="selectBoardInfo" parameterType="boardInfoVO" resultType="boardInfoVO">
-			select board_info_no,
-				   board_title,
-				   user_yn,
-				   popup_yn
-				   
-			from board_info
-			
-			where board_title = #{boardTitle}
-		</select>
-		
-		<select id="selectBoardInfoList" parameterType="boardInfoVO" resultType="boardInfoVO">
-			select board_info_no,
-				   board_title,
-				   user_yn,
-				   popup_yn
-			
-			from board_info
-			
-			where delete_yn = 'N'
-			and order by DESC
-			
-		</select>
-		
 		<select id="selectBoardList" parameterType="boardVO" resultType="boardVO">
 			select board_no,
 				title,
@@ -34,7 +10,8 @@
 				
 			from board
 			
-			where delete_yn='N'
+			where 1=1
+			and   delete_yn='N'
 			<if test="searchKeyword != null and searchKeyword != '' ">
         	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
         	</if>
@@ -46,15 +23,31 @@
 		
 		<select id="selectBoardListCount" parameterType="boardVO" resultType="int">
 			select count(*)
+			
 			from board
-			where board_no = #{boardNo}
+			
+			where delete_yn ='N'
 			<if test="searchKeyword != null and searchKeyword != '' ">
         	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
         	</if>
 		</select>
 		
+		<select id="selectBoard" parameterType="boardVO" resultType="boardVO">
+			select board_no,
+				   title,
+				   content,
+				   delete_yn,
+				   insert_date,
+				   process
+			
+			from   board
+			
+			where board_no = #{boardNo}
+		</select>
+		
 		<insert id="insert" parameterType="boardVO" useGeneratedKeys="true" keyProperty="boardNo">
-			insert into 
+			insert into board
+			
 				set title = #{title},
 					content = #{content},
 					insert_date = now()

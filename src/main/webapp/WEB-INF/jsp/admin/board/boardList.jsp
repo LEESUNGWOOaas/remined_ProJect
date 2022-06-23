@@ -10,7 +10,7 @@
     
 <div class="header"> 
 	<h1 class="page-header">
-		 <small>${bbsInfoVO.bbsInfoTitle }</small>
+		 <small>Board</small>
 	</h1>
 </div>
 
@@ -19,7 +19,7 @@
 	<div class="row mb-10 ">
 		<div class="col-sm-12 text-right">
 
-			 <a href="form" class="btn btn-sm btn-primary">등록</a><br/>
+			 <a href="boardForm" class="btn btn-sm btn-primary">등록</a><br/>
 		</div>
 	</div>
 	
@@ -37,11 +37,11 @@
 					<div class="input-group">
 						<div class="input-group-addon">
 							<select name="searchType">						
-								<option value="title" <c:if test="${bbsVO.searchType eq 'title'}">selected</c:if>>제목</option>
-								<option value="content" <c:if test="${bbsVO.searchType eq 'content'}">selected</c:if>>내용</option>
+								<option value="title" <c:if test="${boardVO.searchType eq 'title'}">selected</c:if>>제목</option>
+								<option value="content" <c:if test="${boardVO.searchType eq 'content'}">selected</c:if>>내용</option>
 							</select>
 						</div>
-						<input type="text" name="searchKeyword" class="form-control" value="${bbsVO.searchKeyword}">
+						<input type="text" name="searchKeyword" class="form-control" value="${boardVO.searchKeyword}">
 						<span class="input-group-btn">
 							<button type="submit" class="btn btn-primary">검색
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -60,31 +60,20 @@
 						<table class="table table-bordered table-hover text-center">
 							<thead>
 								<tr>
-									<th width="30">번호</th>
-									<th width="180">제목</th>
-									<th width="50">파일유무</th>
-									<th width="50">등록일</th>
-									<th width="40">공개범위 </th>
+									<th width="30">No.</th>
+									<th width="180">Title</th> 	
+									<th width="50">Contents</th>
+									
 								</tr>
 							</thead>
 							<tbody>
 								<c:set var="rownum" value="${pageVO.rownum }"/>
-								<c:forEach var="item" items="${bbsList }">
+								<c:forEach var="item" items="${list }">
 								<tr>
 									<td>${rownum }</td>
-									<td class="text-left"><a onclick="view(${item.bbsNo})">${item.title }</a></td>
-									<td><c:choose>
-											<c:when test="${item.thumbnail != null}">
-												<img alt="" src="/assets/admin/img/file.png" >
-											</c:when>
-											<c:otherwise>
-												N
-											</c:otherwise>
-										</c:choose></td>
+									<td class="text-left"><a onclick="view(${item.boardNo})">${item.title }</a></td>
 									<td><fmt:formatDate value="${item.insertDate }" pattern="yyyy-MM-dd"/> </td>
-									<%-- <td><input type="button" class="btn btn-xs btn-danger" value="삭제"
-											onclick="del('${item.bbsNo}')"></td></td> --%>
-									<td><input type="hidden" name="useYn" id="useYn" title="공개범위" class="form-control" required>${item.useYn }</td>
+									
 								</tr>
 								<c:set var="rownum" value="${rownum-1 }"/>
 								</c:forEach>
@@ -107,7 +96,7 @@ $("#group_sel").change(function(){
 
 	var params = $('#exposureForm').serialize();
 	$.ajax({
-		url:"/admin/bbs/{BbsinfoVO.bid}/"+bbsNo,
+		url:"/admin/board/boardList/"+bbsNo,
 		type:'post',
 		data:params,
 		success:function(response){
@@ -117,20 +106,20 @@ $("#group_sel").change(function(){
 	});
 });
 $(function(){
-	activeMenu('/admin/bbs/${bbsInfoVO.bid}/list');
+	activeMenu('/admin/board/boardList');
 });
 
 
 
-function view(bbsNo){
-	location.href= bbsNo+'?'+window.location.search.substring(1);
+function view(boardNo){
+	location.href= boardNo+'?'+window.location.search.substring(1);
 }
 
-function del(bbsNo){
+function del(boardNo){
 	if(!confirm("삭제하시겠습니까?")) return;
 	
 	var params={
-			bbsNo: bbsNo
+			boardNo: boardNo
 	}
 	
 	$.ajax({

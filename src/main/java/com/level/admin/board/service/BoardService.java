@@ -12,4 +12,10 @@ public interface BoardService {
 
 	BoardInfoVO selectBoardInfo(BoardInfoVO boardInfoVO)throws Exception;
 
+	int insert(BoardVO boardVO)throws Exception;
+
+	int delete(BoardVO boardVO)throws Exception;
+
+	BoardVO selectBoard(BoardVO boardVO)throws Exception;
+
 }

@@ -127,7 +127,7 @@ function save(){
 			var formData = new FormData(form);
 			
 			$.ajax({
-			    url : "/admin/bbs/bbs001/save",
+			    url : "/admin/user/save",
 				type: 'POST',
 				data: formData,
 				enctype: 'multipart/form-data',
