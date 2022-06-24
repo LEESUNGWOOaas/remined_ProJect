@@ -49,7 +49,7 @@
 		
 		from   user
 		
-		where  user_no=#{userNo}
+		where user_no = #{userNo}
 	</select>
 	
 	<insert id="insert" parameterType="userVO" useGeneratedKeys="true" keyProperty="userNo">
@@ -67,8 +67,7 @@
 	<update id="update" parameterType="userVO">
 		update	user
 		
-		  set user_no = #{userNo},
-			  user_id = #{userId},
+		  set user_id = #{userId},
 			  user_name = #{userName},
 			  pwd = #{pwd},
 			  email = #{email},

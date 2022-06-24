@@ -8,7 +8,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 
-
 <div class="header"> 
 	<h1 class="page-header">
 		 <small>User</small>
@@ -24,8 +23,8 @@
 			</div>
 		</div>
 		<div class="panel-body">
-		<input type="hidden" name="userNo" value="${empty userVO? 0:userVO.userNo }">
-			<form id="regForm" class="form-horizontal" >
+			<form id="regForm" class="form-horizontal" enctype="multipart/form-data">
+				<input type="hidden" name="userNo" value="${empty userVO? 0:userVO.userNo }">
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="20%" />
@@ -49,17 +48,17 @@
 					
 					<tr>
 						<th>*NickName</th>
-						<td ><input type="text" name="userId" id="userId" title="userId" class="form-control"  required>${userVO.userId }</td>
+						<td ><input type="text" name="userId" id="userId" title="userId" class="form-control" value="${userVO.userId }"  required></td>
 					</tr>
 					
 					<tr>
 						<th>Email</th>
-						<td ><input type="text" name="email" id="email" title="email" class="form-control"  required>${userVO.email }</td>
+						<td ><input type="text" name="email" id="email" title="email" class="form-control" value="${userVO.email }" required></td>
 					</tr>
 					
 					<tr>
 						<th>*PassWord</th>
-						<td ><input type="text" name="pwd" id="pwd" title="pwd" class="form-control"  required>${userVO.pwd }</td>
+						<td ><input type="text" name="pwd" id="pwd" title="pwd" class="form-control" value="" required></td>
 					</tr>
 					
 					<tr>
@@ -68,6 +67,11 @@
 					   	<input type="radio" class="sci" name="gender" id="Female" title="범위" value="F"${userVO.gender eq 'F'? 'checked':'' } ><label for="abroad">여성</label></td>
 					</tr>			
 					
+					<tr>
+						<th>File</th>
+						<input type="file" name="uploadFile" />
+						<button type="submit">파일업로드</button>
+					</tr>
 				</table>
 				
 				
@@ -90,7 +94,7 @@ $(function(){
 
 function goList() {
 		var params = fnGetPrevParmas("");
-		fnRedirect("/admin/user/userList");
+		fnRedirect("./userList");
 }
 		
 

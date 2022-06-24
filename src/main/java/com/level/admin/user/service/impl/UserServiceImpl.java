@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int insert(UserVO userVO) throws Exception {
-		if(userVO.getUserNo()==0) {
+		if(userVO.getUserNo() == 0) {
 			userVO.setHash(SHA256Util.generateSalt());
 			userVO.setPwd(SHA256Util.getEncrypt(userVO.getPwd(), userVO.getHash()));
 			return mapper.insert(userVO);
@@ -53,5 +53,11 @@ public class UserServiceImpl implements UserService{
 	public int delete(UserVO userVO) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.delete(userVO);
+	}
+
+	@Override
+	public int update(UserVO userVO) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.update(userVO);
 	}
 }

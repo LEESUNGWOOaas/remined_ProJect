@@ -22,8 +22,8 @@
 			</div>
 		</div>
 		<div class="panel-body">
-		<input type="hidden" name="boardNo" value="${empty boardVO? 0:boardVO.boardNo }">
 			<form id="regForm" class="form-horizontal" >
+				<input type="hidden" name="boardNo" value="${empty boardVO? 0:boardVO.boardNo }">
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="20%" />
@@ -72,7 +72,7 @@ function goList() {
 		
 
 function cancel(){
-			var url = "${empty boardVO? 'list':boardVO.boardNo}";
+			var url = "${empty boardVO? 'List':boardVO.boardNo}";
 			var params = fnGetPrevParmas("boardNo");
 			fnRedirect(url+'?'+params);
 		}		

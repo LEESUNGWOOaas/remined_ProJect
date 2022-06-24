@@ -16,5 +16,5 @@ public interface UserService {
 
 	int delete(UserVO userVO)throws Exception;
 
-
+	int update(UserVO userVO)throws Exception;
 }

@@ -50,7 +50,17 @@ public class UserController {
 	@RequestMapping("/admin/user/save")
 	public Map<String, Object> insert(UserVO userVO)throws Exception{
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		if(userVO.getUserNo()==0) {
+			UserVO check = userService.selectUserById(userVO.getUserId());
+			if(check!=null) {
+				resultMap.put("result",false);
+				resultMap.put("msg","사용중인 아이디입니다.");
+				return resultMap;
+			}
+		}
+		
 		int result = userService.insert(userVO);
+		
 		if(result >0) {
 			resultMap.put("result",true);
 			resultMap.put("msg","저장되었습니다.");

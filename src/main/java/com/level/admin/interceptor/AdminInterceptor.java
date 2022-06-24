@@ -16,7 +16,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("interceptor");
+		
 		if (!SessionUtil.isLogin()) {
 			if (BaseUtil.isAjax(request))
 				response.sendError(999);

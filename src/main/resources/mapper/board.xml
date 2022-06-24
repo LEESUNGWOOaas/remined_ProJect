@@ -55,11 +55,12 @@
 		
 		<update id="update" parameterType="boardVO">
 			update board
+			
 			set	   title = #{title},
 				   content = #{content},
 				   insert_date = now()
 			
-			where  board_no=#{boardNo}
+			where  board_no =#{boardNo}
 		</update>
 		
 		<update id="delete" parameterType="boardVO">

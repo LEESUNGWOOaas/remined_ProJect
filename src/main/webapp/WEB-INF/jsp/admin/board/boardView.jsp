@@ -63,7 +63,7 @@ $(function(){
 
 function goList() {
 	var params = fnGetPrevParmas("");
-	fnRedirect("./list");
+	fnRedirect("/admin/board/boardList");
 }
 
 

@@ -73,7 +73,7 @@ function goList() {
 }
 
 function goForm(userNo) {
-	location.href='./form?userNo='+userNo+'&'+window.location.search.substring(1);
+	location.href='./userForm?userNo='+userNo+'&'+window.location.search.substring(1);
 }
 
 
