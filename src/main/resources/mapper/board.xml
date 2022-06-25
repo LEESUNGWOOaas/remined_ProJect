@@ -6,8 +6,9 @@
 				title,
 				content,
 				process,
-				insert_date
-				
+				insert_date,
+				(select concat(save_path, save_name) from file where process='board' and kind ='File'  and ref=board_no and file_ext in ('jpg','bmp','gif','png','jpeg') limit 1) thumbnail
+			
 			from board
 			
 			where 1=1
@@ -39,6 +40,7 @@
 				   delete_yn,
 				   insert_date,
 				   process
+				   
 			
 			from   board
 			

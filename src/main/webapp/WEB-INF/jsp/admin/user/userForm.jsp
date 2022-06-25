@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<form id="regForm" class="form-horizontal" enctype="multipart/form-data">
+			<form id="regForm" class="form-horizontal">
 				<input type="hidden" name="userNo" value="${empty userVO? 0:userVO.userNo }">
 				<table class="table table-bordered">
 					<colgroup>
@@ -67,11 +67,7 @@
 					   	<input type="radio" class="sci" name="gender" id="Female" title="범위" value="F"${userVO.gender eq 'F'? 'checked':'' } ><label for="abroad">여성</label></td>
 					</tr>			
 					
-					<tr>
-						<th>File</th>
-						<input type="file" name="uploadFile" />
-						<button type="submit">파일업로드</button>
-					</tr>
+					
 				</table>
 				
 				
@@ -107,6 +103,8 @@ function cancel(){
 
 function save(){
 
+	var frm=document.regForm;
+	
 			//return;
 			var userId = $('#userId').val();
 			var userName = $('#userName').val();
@@ -117,13 +115,19 @@ function save(){
 			
 			if(userId == ""){
 				alert("닉네임을 입력해주세요");
+				frm.userId.focus();
+				return;
 			}
 			if(userName == ""){
 				alert("이름을 입력해주세요")
+				frm.userName.focus();
+				return;
 			}
 			
 			if(pwd==''){
 				alert("비밀번호를 입력해주세요");
+				frm.pwd.focus();
+				return;
 			}
 			
 		/* 	파일이 존재시 사용함

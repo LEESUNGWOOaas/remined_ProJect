@@ -2,9 +2,11 @@ package com.level.admin.board.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.level.vo.BoardInfoVO;
 import com.level.vo.BoardVO;
-import com.level.vo.UserVO;
+
 
 public interface BoardService {
 
@@ -12,10 +14,12 @@ public interface BoardService {
 
 	BoardInfoVO selectBoardInfo(BoardInfoVO boardInfoVO)throws Exception;
 
-	int insert(BoardVO boardVO)throws Exception;
+	int insert(BoardVO boardVO, MultipartHttpServletRequest multipart)throws Exception;
 
 	int delete(BoardVO boardVO)throws Exception;
 
 	BoardVO selectBoard(BoardVO boardVO)throws Exception;
+
+	int update(BoardVO boardVO)throws Exception;
 
 }

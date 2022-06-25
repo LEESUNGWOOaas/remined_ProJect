@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+
 
 <div class="header"> 
 	<h1 class="page-header">
@@ -37,10 +43,22 @@
 				
 				<tr>
 					<th>Contents</th>
-					<td style=" line-height: 1.5em">${boardVO.content }</td>
+					<td style="line-height: 1.5em">${boardVO.content }</td>
 				</tr>
 				
-				
+				<tr>
+					<th>File</th>
+					<td>
+						<ul class="list-unstyled">
+							<c:forEach var="item" items="${boardVO.fileList }">
+								<li class="mb-5">
+									<a class="bold" onclick="fnFileDown('${item.fileNoAES}')">${item.fileName }</a> &nbsp; 
+									[${item.fileSizeMB } M]
+								</li>
+	                    	</c:forEach>
+						</ul>
+					</td>
+				</tr>
 			</table>
 			
 			<div class="form-group">

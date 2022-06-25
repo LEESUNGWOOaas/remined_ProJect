@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.level.admin.board.service.BoardService;
 import com.level.vo.BoardVO;
@@ -43,9 +44,9 @@ public class BoardController {
 	
 	@ResponseBody
 	@RequestMapping("/admin/board/save")
-	public Map<String, Object>insert(BoardVO boardVO)throws Exception{
+	public Map<String, Object>insert(BoardVO boardVO,MultipartHttpServletRequest multiPart)throws Exception{
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		int result = boardService.insert(boardVO);
+		int result = boardService.insert(boardVO,multiPart);
 		if(result > 0) {
 			resultMap.put("result",true);
 			resultMap.put("msg","저장되었습니다.");

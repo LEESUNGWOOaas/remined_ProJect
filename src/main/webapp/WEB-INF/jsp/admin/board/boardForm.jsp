@@ -40,8 +40,9 @@
 						<th>*Contents</th>
 						<td ><textarea name="content" id="content" title="content" class="form-control"  required>${boardVO.content }</textarea></td>
 					</tr>
-					
-						
+					<tr>
+						<th>File</th>
+						<td><input type="file" name="File" id="File" title="File" class="form-control"></td>
 					
 				</table>
 				
@@ -88,15 +89,17 @@ function save(){
 			
 			if(title == ""){
 				alert("제목을 입력해주세요");
+				return;
 			}
 			if(content == ""){
 				alert("내용을 입력해주세요")
+				return;
 			}
 			
 		
+		
 			
-		/* 	파일이 존재시 사용함
-			var form = $('#regForm')[0];a
+			var form = $('#regForm')[0];
 			var formData = new FormData(form);
 			
 			$.ajax({
@@ -113,8 +116,8 @@ function save(){
 					goList();		
 				}
 			}
-		}); */
-		var param = $('#regForm').serialize();
+		}); 
+		/* var param = $('#regForm').serialize();
 		
 			$.ajax({
 			    url : "/admin/board/save",
@@ -128,6 +131,6 @@ function save(){
 						goList();
 					}
 				}
-			});
+			}); */
 }
 </script>
