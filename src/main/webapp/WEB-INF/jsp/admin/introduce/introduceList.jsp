@@ -19,7 +19,7 @@
 	<div class="row mb-10 ">
 		<div class="col-sm-12 text-right">
 
-			 <a href="boardForm" class="btn btn-sm btn-primary">등록</a><br/>
+			 <a href="introduceForm" class="btn btn-sm btn-primary">등록</a><br/>
 		</div>
 	</div>
 	
@@ -66,6 +66,7 @@
 									<th width="50">Release Date</th>
 								</tr>
 							</thead>
+							
 							<tbody>
 								<c:set var="rownum" value="${pageVO.rownum }"/>
 								<c:forEach var="item" items="${list }">

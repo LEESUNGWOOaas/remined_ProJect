@@ -49,7 +49,7 @@ public class IntroduceController {
 		int result = introduceService.insert(introduceVO);
 		if(result>0) {
 			resultMap.put("result",true);
-			resultMap.put("msg","Error");
+			resultMap.put("msg","저장되었습니다.");
 		}else {
 			resultMap.put("result",false);
 			resultMap.put("msg","Error");

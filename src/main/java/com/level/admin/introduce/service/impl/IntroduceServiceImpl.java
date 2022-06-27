@@ -29,11 +29,13 @@ public class IntroduceServiceImpl implements IntroduceService{
 	@Override
 	public int insert(IntroduceVO introduceVO) throws Exception {
 		if(introduceVO.getIntroduceNo()==0) {
-			mapper.insert(introduceVO);
+			
+			return mapper.insert(introduceVO);
 		}else {
-			mapper.update(introduceVO);
+
 		}
-		return mapper.insert(introduceVO);
+		return mapper.update(introduceVO);	
+		
 	}
 
 	@Override

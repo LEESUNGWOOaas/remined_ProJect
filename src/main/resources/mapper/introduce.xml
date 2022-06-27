@@ -24,6 +24,19 @@
 	
 	</select>
 
+	<select id="selectIntroduce" parameterType="introduceVO" resultType="introduceVO">
+		select	introduce_no,
+			    title,
+			    content,
+			    introduce_user,
+			    delete_yn,
+			    popup_yn,
+			    insert_date
+		
+		  from  introduce
+		  
+		 where	introduce_no = #{introduceNo}
+	</select>
 	<select id="selectIntroduceListCount" parameterType="introduceVO" resultType="int">
 		select count(*)
 		
@@ -36,14 +49,11 @@
 	</select>
 	
 	<insert id="insert" parameterType="introduceVO" useGeneratedKeys="true" keyProperty="introduceNo">
-		insert into introduce
+			insert into introduce
 		
-			    set introduce_no =#{introduceNo},
-			  	    title = #{title},
+			    set title = #{title},
 			   	    content = #{content},
 			   		introduce_user =#{introduceUser},
-			   		delete_yn =#{deleteYn},
-			   		popup_yn =#{popupYn},
 			   		insert_date = now()
 	</insert>
 	
@@ -55,7 +65,6 @@
 				 title = #{title},
 				 content = #{content},
 				 introduce_user =#{introduceUser},
-				 delete_yn =#{deleteYn},
 				 popup_yn =#{popupYn},
 				 insert_date = now()
 	</update>	

@@ -23,14 +23,13 @@
 		</div>
 		<div class="panel-body">
 			<form id="regForm" class="form-horizontal" >
-				<input type="hidden" name="boardNo" value="${empty introduceVO? 0:introduceVO.introduceNo }">
+				<input type="hidden" name="introduceNo" value="${empty introduceVO? 0:introduceVO.introduceNo }">
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="20%" />
 						<col width="80%" />
 					</colgroup>
 
-					
 					<tr>
 						<th>*Project Title</th>
 						<td><input type="text" name="title" id="title" title="title" class="form-control" value="${introduceVO.title }"required></td>
@@ -65,20 +64,20 @@
 </div>
 <script>
 $(function(){
-	activeMenu('/admin/board/boardList');
+	activeMenu('/admin/introduce/introduceList');
 	CKEDITOR.replace("content");
 	
 });
 
 function goList() {
 		var params = fnGetPrevParmas("");
-		fnRedirect("/admin/board/boardList");
+		fnRedirect("/admin/introduce/introduceList");
 }
 		
 
 function cancel(){
-			var url = "${empty boardVO? 'List':boardVO.boardNo}";
-			var params = fnGetPrevParmas("boardNo");
+			var url = "${empty introduceVO? 'List':introduceVO.introduceNo}";
+			var params = fnGetPrevParmas("introduceNo");
 			fnRedirect(url+'?'+params);
 		}		
 		
@@ -107,7 +106,7 @@ function save(){
 			var formData = new FormData(form);
 			
 			$.ajax({
-			    url : "/admin/board/save",
+			    url : "/admin/introduce/save",
 				type: 'POST',
 				data: formData,
 				enctype: 'multipart/form-data',

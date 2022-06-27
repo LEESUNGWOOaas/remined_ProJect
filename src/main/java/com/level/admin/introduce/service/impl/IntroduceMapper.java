@@ -19,5 +19,5 @@ public interface IntroduceMapper {
 	
 	int delete(IntroduceVO introduceVO)throws Exception;
 
-	void update(IntroduceVO introduceVO)throws Exception;
+	int update(IntroduceVO introduceVO)throws Exception;
 }
