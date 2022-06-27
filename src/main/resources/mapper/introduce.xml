@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.level.admin.introduce.service.impl.IntroduceMapper">
+	<select id="selectIntroduceList" parameterType="introduceVO" resultType="introduceVO">
+		select introduce_no,
+			   title,
+			   content,
+			   introduce_user,
+			   delete_yn,
+			   popup_yn,
+			   insert_date
+		
+		  from introduce
+		  
+		 where 1=1
+		 and   delete_yn = 'N'
+		 <if test="searchKeyword != null and searchKeyword != '' ">
+        	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
+        	</if>
+        ORDER BY introduce_no desc 
+             <if test="pageVO != null">
+        limit #{pageVO.startNo}, #{pageVO.listSize}
+        </if>
+	
+	</select>
+
+	<select id="selectIntroduceListCount" parameterType="introduceVO" resultType="int">
+		select count(*)
+		
+		  from introduce
+		  
+		 where 	delete_yn ='N'
+		 <if test="searchKeyword != null and searchKeyword != '' ">
+        	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
+        	</if>
+	</select>
+	
+	<insert id="insert" parameterType="introduceVO" useGeneratedKeys="true" keyProperty="introduceNo">
+		insert into introduce
+		
+			    set introduce_no =#{introduceNo},
+			  	    title = #{title},
+			   	    content = #{content},
+			   		introduce_user =#{introduceUser},
+			   		delete_yn =#{deleteYn},
+			   		popup_yn =#{popupYn},
+			   		insert_date = now()
+	</insert>
+	
+	
+	<update id="update" parameterType="introduceVO">
+		  update introduce
+		  
+			 set introduce_no =#{introduceNo},
+				 title = #{title},
+				 content = #{content},
+				 introduce_user =#{introduceUser},
+				 delete_yn =#{deleteYn},
+				 popup_yn =#{popupYn},
+				 insert_date = now()
+	</update>	
+	
+	<update id="delete" parameterType="introduceVO">
+	  	  update introduce
+	  	  
+			 set delete_yn = 'Y'
+			 
+			 where introduce_no = #{introduceNo}
+	</update>	
+</mapper>

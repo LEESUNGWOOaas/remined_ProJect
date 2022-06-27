@@ -37,11 +37,11 @@
 					<div class="input-group">
 						<div class="input-group-addon">
 							<select name="searchType">						
-								<option value="title" <c:if test="${boardVO.searchType eq 'title'}">selected</c:if>>제목</option>
-								<option value="content" <c:if test="${boardVO.searchType eq 'content'}">selected</c:if>>내용</option>
+								<option value="title" <c:if test="${introduceNo.searchType eq 'title'}">selected</c:if>>제목</option>
+								<option value="content" <c:if test="${introduceNo.searchType eq 'content'}">selected</c:if>>내용</option>
 							</select>
 						</div>
-						<input type="text" name="searchKeyword" class="form-control" value="${boardVO.searchKeyword}">
+						<input type="text" name="searchKeyword" class="form-control" value="${introduceNo.searchKeyword}">
 						<span class="input-group-btn">
 							<button type="submit" class="btn btn-primary">검색
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -61,9 +61,9 @@
 							<thead>
 								<tr>
 									<th width="30">No.</th>
-									<th width="180">Title</th> 	
-									<th width="50">Contents</th>
-									
+									<th width="180">Project Title</th> 	
+									<th width="50">User</th>
+									<th width="50">Release Date</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -71,7 +71,8 @@
 								<c:forEach var="item" items="${list }">
 								<tr>
 									<td>${rownum }</td>
-									<td class="text-left"><a onclick="view(${item.boardNo})">${item.title }</a></td>
+									<td class="text-left"><a onclick="view(${item.introduceNo})">${item.title }</a></td>
+									<td>${item.introduceUser }</td>
 									<td><fmt:formatDate value="${item.insertDate }" pattern="yyyy-MM-dd"/> </td>
 									
 								</tr>
@@ -96,7 +97,7 @@ $("#group_sel").change(function(){
 
 	var params = $('#exposureForm').serialize();
 	$.ajax({
-		url:"/admin/board/boardList/"+boardNo,
+		url:"/admin/introduce/introduceList/"+introduceNo,
 		type:'post',
 		data:params,
 		success:function(response){
@@ -106,20 +107,20 @@ $("#group_sel").change(function(){
 	});
 });
 $(function(){
-	activeMenu('/admin/board/boardList');
+	activeMenu('/admin/introduce/introduceList');
 });
 
 
 
-function view(boardNo){
-	location.href= boardNo+'?'+window.location.search.substring(1);
+function view(introduceNo){
+	location.href= introduceNo+'?'+window.location.search.substring(1);
 }
 
-function del(boardNo){
+function del(introduceNo){
 	if(!confirm("삭제하시겠습니까?")) return;
 	
 	var params={
-			boardNo: boardNo
+			introduceNo: introduceNo
 	}
 	
 	$.ajax({

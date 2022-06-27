@@ -114,11 +114,10 @@
 					</li>
 					
 					<li class="li-menu">
-						<a href="/admin/notice"><i class="fa fa-comment"></i>알림마당</a>
+						<a href="/admin/introduce"><i class="fa fa-comment"></i>Introduce</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="/admin/notice/bbs008/list">연구단 소식</a>
-							</li>
+								<a href="/admin/introduce/introduceList">Project</a>
 							<li>
 								<a href="/admin/notice/bbs009/list">FAQ</a>
 							</li>

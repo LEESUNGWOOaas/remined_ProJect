@@ -9,7 +9,7 @@
 
 <div class="header"> 
 	<h1 class="page-header">
-		 <small>Board</small>
+		 <small>Introduce</small>
 	</h1>
 </div>
 
@@ -23,7 +23,7 @@
 		</div>
 		<div class="panel-body">
 			<form id="regForm" class="form-horizontal" >
-				<input type="hidden" name="boardNo" value="${empty boardVO? 0:boardVO.boardNo }">
+				<input type="hidden" name="boardNo" value="${empty introduceVO? 0:introduceVO.introduceNo }">
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="20%" />
@@ -32,18 +32,22 @@
 
 					
 					<tr>
-						<th>*Title</th>
-						<td><input type="text" name="title" id="title" title="title" class="form-control" value="${boardVO.title }"required></td>
+						<th>*Project Title</th>
+						<td><input type="text" name="title" id="title" title="title" class="form-control" value="${introduceVO.title }"required></td>
+					</tr>
+					<tr>
+						<th>*Developer</th>
+						<td><input type="text" name="title" id="title" title="title" class="form-control" value="${introduceVO.introduceUser }"required></td>
 					</tr>
 					
 					<tr>
 						<th>*Contents</th>
-						<td ><textarea name="content" id="content" title="content" class="form-control"  required>${boardVO.content }</textarea></td>
+						<td ><textarea name="content" id="content" title="content" class="form-control"  required>${introduceVO.content }</textarea></td>
 					</tr>
-					<tr>
+					<!-- <tr>  지금은 안쓰겠지만 혹시모르니 주석처리
 						<th>File</th>
 						<td><input type="file" name="File" id="File" title="File" class="form-control"></td>
-					</tr>
+					</tr> -->
 				</table>
 				
 				
