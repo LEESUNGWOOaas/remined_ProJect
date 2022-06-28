@@ -64,7 +64,7 @@ public class IntroduceController {
 		int result = introduceService.delete(introduceVO);
 		if(result>0) {
 			resultMap.put("result",true);
-			resultMap.put("msg","Error");
+			resultMap.put("msg","삭제되었습니다.");
 		}else {
 			resultMap.put("result",false);
 			resultMap.put("msg","Error");

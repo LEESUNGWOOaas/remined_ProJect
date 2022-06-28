@@ -75,7 +75,6 @@
 									<td class="text-left"><a onclick="view(${item.introduceNo})">${item.title }</a></td>
 									<td>${item.introduceUser }</td>
 									<td><fmt:formatDate value="${item.insertDate }" pattern="yyyy-MM-dd"/> </td>
-									
 								</tr>
 								<c:set var="rownum" value="${rownum-1 }"/>
 								</c:forEach>

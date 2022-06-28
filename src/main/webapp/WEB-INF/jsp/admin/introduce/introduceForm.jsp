@@ -36,7 +36,7 @@
 					</tr>
 					<tr>
 						<th>*Developer</th>
-						<td><input type="text" name="title" id="title" title="title" class="form-control" value="${introduceVO.introduceUser }"required></td>
+						<td><input type="text" name="introduceUser" id="introduceUser" title="introduceUser" class="form-control" value="${introduceVO.introduceUser }"required></td>
 					</tr>
 					
 					<tr>

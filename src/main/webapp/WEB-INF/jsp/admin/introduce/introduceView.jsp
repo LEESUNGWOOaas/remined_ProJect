@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<th>Project User</th>
-					<td>${introduceVO.insertUser}</td>
+					<td>${introduceVO.introduceUser}</td>
 				</tr>
 				
 				<tr>
