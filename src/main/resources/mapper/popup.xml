@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.level.admin.popup.service.impl.PopupMapper">
+	<select id="selectPopupList" parameterType="popupVO" resultType="popupVO">
+		select popup_no,
+		 	   title,
+		 	   content,
+		 	   process,
+		 	   delete_yn,
+		 	   content_type,
+		 	   lotation_x,
+		 	   lotation_y,
+		 	   start_date,
+		 	   end_date,
+		 	   use_yn,
+		 	   insert_date
+		 	   
+		
+		  from popup
+		 
+		 where	delete_yn='N'
+		 <if test="searchKeyword != null and searchKeyword != '' ">
+        	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
+        	</if>
+        ORDER BY popup_no desc 
+             <if test="pageVO != null">
+        limit #{pageVO.startNo}, #{pageVO.listSize}
+        </if>
+	</select>
+	
+	<select id="selectPopupListCount" parameterType="popupVO" resultType="int">
+		select count(*)
+		
+		  from popup
+		  
+		 where delete_yn = 'N' 
+		 <if test="searchKeyword != null and searchKeyword != '' ">
+        	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
+        	</if>
+	</select>
+	
+	<select id="selectPopup" parameterType="popupVO" resultType="popupVO">
+		select popup_no,
+		 	   title,
+		 	   content,
+		 	   process,
+		 	   delete_yn,
+		 	   content_type,
+		 	   lotation_x,
+		 	   lotation_y,
+		 	   start_date,
+		 	   end_date,
+		 	   use_yn,
+		 	   insert_date
+		
+		  from popup
+		  
+		  where popup_no= #{popupNo}
+	</select>
+	
+	<insert id="insert" parameterType="popupVO" useGeneratedKeys="true" keyProperty="popupNo">
+		insert into popup
+				
+				set title = #{title},
+				    content = #{content},
+				    location_x = #{locationX},
+				    location_y = #{locationY},
+				    start_date = #{startDate},
+				    end_date = #{endDate},
+				    use_yn = #{useYn},
+				    content_type=#{contentType},
+				    insert_date = now()
+	</insert>
+	
+	<update id="update" parameterType="popupVO">
+		update popup
+		
+		   set	title = #{title},
+			    content = #{content},
+			    location_x = #{locationX},
+			    location_y = #{locationY},
+			    start_date = #{startDate},
+			    end_date = #{endDate},
+			    use_yn = #{useYn},
+			    content_type=#{contentType},
+			    insert_date = now()
+			    
+		  where popup_no = #{popupNo}
+	</update> 
+	
+	<update id="delete" parameterType="popupVO">
+		update popup 
+		
+		set delete_yn = 'Y'
+		
+		where popup_no = #{popupNo}
+	</update>
+	
+</mapper>

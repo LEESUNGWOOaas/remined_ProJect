@@ -5,10 +5,18 @@ import java.sql.Timestamp;
 import org.apache.ibatis.type.Alias;
 
 @Alias("popupVO")
-public class PopupVO {
+public class PopupVO extends CommonVO{
+	private String process= "popup";
+	
 	private int popupNo;
 	private String title;
 	private String content;
+	private String lotationX;
+	private String lotationY;
+	private String useYn;
+	private String contentType;
+	private String startDate;
+	private String endDate;
 	private String deleteYn;
 	
 	Timestamp insertDate;
@@ -51,6 +59,58 @@ public class PopupVO {
 
 	public void setInsertDate(Timestamp insertDate) {
 		this.insertDate = insertDate;
+	}
+
+	public String getLotationX() {
+		return lotationX;
+	}
+
+	public void setLotationX(String lotationX) {
+		this.lotationX = lotationX;
+	}
+
+	public String getLotationY() {
+		return lotationY;
+	}
+
+	public void setLotationY(String lotationY) {
+		this.lotationY = lotationY;
+	}
+
+	public String getUseYn() {
+		return useYn;
+	}
+
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getProcess() {
+		return process;
 	}
 	
 	

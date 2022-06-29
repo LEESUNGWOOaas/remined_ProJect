@@ -129,7 +129,7 @@
 						<a href="site setting"><i class="fa fa-group"></i> 사이트설정</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="/admin/setting/bbs011/list">팝업관리</a>
+								<a href="/admin/popup/popupList">팝업관리</a>
 							</li>
 						</ul>
 					</li>

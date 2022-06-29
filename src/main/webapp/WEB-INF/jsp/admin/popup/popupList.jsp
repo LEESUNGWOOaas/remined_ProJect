@@ -10,7 +10,7 @@
     
 <div class="header"> 
 	<h1 class="page-header">
-		 <small>Introduce</small>
+		 <small>Popup</small>
 	</h1>
 </div>
 
@@ -19,7 +19,7 @@
 	<div class="row mb-10 ">
 		<div class="col-sm-12 text-right">
 
-			 <a href="introduceForm" class="btn btn-sm btn-primary">등록</a><br/>
+			 <a href="popupForm" class="btn btn-sm btn-primary">등록</a><br/>
 		</div>
 	</div>
 	
@@ -37,11 +37,11 @@
 					<div class="input-group">
 						<div class="input-group-addon">
 							<select name="searchType">						
-								<option value="title" <c:if test="${introduceNo.searchType eq 'title'}">selected</c:if>>제목</option>
-								<option value="content" <c:if test="${introduceNo.searchType eq 'content'}">selected</c:if>>내용</option>
+								<option value="title" <c:if test="${popupVO.searchType eq 'title'}">selected</c:if>>제목</option>
+								<option value="content" <c:if test="${popupVO.searchType eq 'content'}">selected</c:if>>내용</option>
 							</select>
 						</div>
-						<input type="text" name="searchKeyword" class="form-control" value="${introduceNo.searchKeyword}">
+						<input type="text" name="searchKeyword" class="form-control" value="${popupVO.searchKeyword}">
 						<span class="input-group-btn">
 							<button type="submit" class="btn btn-primary">검색
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -61,20 +61,19 @@
 							<thead>
 								<tr>
 									<th width="30">No.</th>
-									<th width="180">Project Title</th> 	
-									<th width="50">User</th>
-									<th width="50">Release Date</th>
+									<th width="180">Title</th> 	
+									<th width="50">Contents</th>
+									
 								</tr>
 							</thead>
-							
 							<tbody>
 								<c:set var="rownum" value="${pageVO.rownum }"/>
 								<c:forEach var="item" items="${list }">
 								<tr>
 									<td>${rownum }</td>
-									<td class="text-left"><a onclick="view(${item.introduceNo})">${item.title }</a></td>
-									<td>${item.introduceUser }</td>
+									<td class="text-left"><a onclick="view(${item.boardNo})">${item.title }</a></td>
 									<td><fmt:formatDate value="${item.insertDate }" pattern="yyyy-MM-dd"/> </td>
+									
 								</tr>
 								<c:set var="rownum" value="${rownum-1 }"/>
 								</c:forEach>
@@ -97,7 +96,7 @@ $("#group_sel").change(function(){
 
 	var params = $('#exposureForm').serialize();
 	$.ajax({
-		url:"/admin/introduce/introduceList/"+introduceNo,
+		url:"/admin/popup/popupList/"+boardNo,
 		type:'post',
 		data:params,
 		success:function(response){
@@ -107,20 +106,20 @@ $("#group_sel").change(function(){
 	});
 });
 $(function(){
-	activeMenu('/admin/introduce/introduceList');
+	activeMenu('/admin/popup/popupList');
 });
 
 
 
-function view(introduceNo){
-	location.href= introduceNo+'?'+window.location.search.substring(1);
+function view(popupNo){
+	location.href= popupNo+'?'+window.location.search.substring(1);
 }
 
-function del(introduceNo){
+function del(popupNo){
 	if(!confirm("삭제하시겠습니까?")) return;
 	
 	var params={
-			introduceNo: introduceNo
+			popupNo: popupNo
 	}
 	
 	$.ajax({

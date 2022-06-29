@@ -10,7 +10,7 @@
 
 <div class="header"> 
 	<h1 class="page-header">
-		<small>Introduce</small>
+		<small>Popup</small>
 	</h1>
 </div>
 
@@ -32,28 +32,25 @@
 
 				<tr>
 					<th>Title</th>
-					<td>${introduceVO.title }</td>
+					<td>${popupVO.title }</td>
 				</tr>
 				
 				<tr>
 					<th>InsertDate</th>
-					<td>${introduceVO.insertDate}</td>
+					<td>${popupVO.insertDate}</td>
 				</tr>
-				<tr>
-					<th>Project User</th>
-					<td>${introduceVO.introduceUser}</td>
-				</tr>
+				
 				
 				<tr>
 					<th>Contents</th>
-					<td style="line-height: 1.5em">${introduceVO.content }</td>
+					<td style="line-height: 1.5em">${popupVO.content }</td>
 				</tr>
 				
-				<%-- <tr>
+				<tr>
 					<th>File</th>
 					<td>
 						<ul class="list-unstyled">
-							<c:forEach var="item" items="${boardVO.fileList }">
+							<c:forEach var="item" items="${popupVO.fileList }">
 								<li class="mb-5">
 									<a class="bold" onclick="fnFileDown('${item.fileNoAES}')">${item.fileName }</a> &nbsp; 
 									[${item.fileSizeMB } M]
@@ -61,13 +58,13 @@
 	                    	</c:forEach>
 						</ul>
 					</td>
-				</tr> --%>
+				</tr>
 			</table>
 			
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
-                       <input type="button" class="btn btn-success" value="수정" onclick="goForm(${introduceVO.introduceNo})"> 
-                       <input type="button" class="btn btn-danger" value="삭제" onclick="del(${introduceVO.introduceNo})"> 
+                       <input type="button" class="btn btn-success" value="수정" onclick="goForm(${popupVO.popupNo})"> 
+                       <input type="button" class="btn btn-danger" value="삭제" onclick="del(${popupVO.popupNo})"> 
                        <input type="button" class="btn btn-default" value="목록으로" onclick="goList();"> 
 				</div>
 			</div>
@@ -79,25 +76,25 @@
 
 <script>
 $(function(){
-	activeMenu('/admin/introduce/introduceList');
+	activeMenu('/admin/popup/popupList');
 });
 
 function goList() {
 	var params = fnGetPrevParmas("");
-	fnRedirect("/admin/introduce/introduceList");
+	fnRedirect("/admin/popup/popupList");
 }
 
 
 function goForm(boardNo){
-	location.href='./introduceForm?introduceNo='+boardNo+'&'+window.location.search.substring(1);
+	location.href='./popupForm?popupNo='+popupNo+'&'+window.location.search.substring(1);
 }
 
-function del(introduceNo) {
+function del(popupNo) {
 	
 	if(!confirm("삭제하시겠습니까?")) return;
 	
 	var params = {
-		"introduceNo": introduceNo
+		"popupNo": popupNo
 	}
 	
 	$.ajax({
