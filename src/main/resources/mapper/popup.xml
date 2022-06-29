@@ -63,8 +63,8 @@
 				
 				set title = #{title},
 				    content = #{content},
-				    location_x = #{locationX},
-				    location_y = #{locationY},
+				    lotation_x = #{lotationX},
+				    lotation_y = #{lotationY},
 				    start_date = #{startDate},
 				    end_date = #{endDate},
 				    use_yn = #{useYn},
@@ -77,8 +77,8 @@
 		
 		   set	title = #{title},
 			    content = #{content},
-			    location_x = #{locationX},
-			    location_y = #{locationY},
+			    lotation_x = #{lotationX},
+			    lotation_y = #{lotationY},
 			    start_date = #{startDate},
 			    end_date = #{endDate},
 			    use_yn = #{useYn},

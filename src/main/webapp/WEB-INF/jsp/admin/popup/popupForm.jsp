@@ -48,7 +48,16 @@
 							</div>
 						</td>
 					</tr>
-					
+					<tr>
+						<th>View Size</th>						
+						<td>Width&nbsp;&nbsp;<input type="text"  name="width" id="width" style="width:40%; display:inline-block;" title="width" class="form-control" value="${popupVO.width}">&nbsp;
+					&nbsp;Height&nbsp;&nbsp;<input type="text" name="height" id="height" title="height" style="width:40%; display:inline-block;" class="form-control" value="${popupVO.height }"></td>
+					</tr>
+					<tr>
+						<th>View Location</th>
+						<td>X&nbsp;<input type="text" name="lotationX" id="lotationX" style="width:20%; display:inline-block;" title="lotationX" class="form-control" value="">&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;<input type="text" name="lotationY" id="lotationY" style="width:20%; display:inline-block;" title="lotationY" class="form-control" value=""></td>
+					</tr>
 					<tr class="contentType-editor" ${empty popupVO ||popupVO.contentType eq 'image'? 'hide':'' }>
 						<th>*Contents</th>
 						<td ><textarea name="content" id="content" title="content" class="form-control"  required>${popupVO.content }</textarea></td>
@@ -56,16 +65,17 @@
 					<tr class="contentType-image" ${empty popupVO ||popupVO.contentType eq 'editor'? 'hide':'' }>
 						<th>File</th>
 						<td><input type="file" name="File" id="File" title="File" class="form-control"></td>
-					</tr>
-					
-					
 					<tr>
-					
+						<th scope="row">Popup ExposureTime</th>
+						<td>
+							<label for="">
+								<input type="text" name="startDate" id="datepicker_str" class="form-control-range datepicker" value="${popupVO.startDate }" title="시작일" required>
+								~
+								<input type="text" name="endDate" id="datepicker_end" class="form-control-range datepicker" value="${popupVO.endDate }" title="종료일" required>
+							</label>
+						</td>
 					</tr>
-					
-					<tr>
-					
-					</tr>					
+			
 				</table>
 				
 				
@@ -82,6 +92,7 @@
 
 </div>
 <script>
+
 $(function(){
 	activeMenu('/admin/popup/popupList');
 	CKEDITOR.replace("content");
