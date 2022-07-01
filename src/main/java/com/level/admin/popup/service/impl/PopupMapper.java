@@ -15,4 +15,9 @@ public interface PopupMapper {
 	PopupVO selectPopup(PopupVO popupVO)throws Exception;
 
 	int insert(PopupVO popupVO)throws Exception;
+
+	int update(PopupVO popupVO)throws Exception;
+
+	int delete(PopupVO popupVO)throws Exception;
+
 }

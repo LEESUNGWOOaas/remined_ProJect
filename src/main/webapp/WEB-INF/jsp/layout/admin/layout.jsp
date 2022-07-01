@@ -126,10 +126,10 @@
 					
 					
 					<li class="li-menu">
-						<a href="site setting"><i class="fa fa-group"></i> 사이트설정</a>
+						<a href="site setting"><i class="fa fa-group"></i> Site Setting</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="/admin/popup/popupList">팝업관리</a>
+								<a href="/admin/popup/popupList">Popup Manage</a>
 							</li>
 						</ul>
 					</li>

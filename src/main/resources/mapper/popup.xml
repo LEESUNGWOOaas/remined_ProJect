@@ -7,18 +7,22 @@
 		 	   content,
 		 	   process,
 		 	   delete_yn,
+		 	   width,
+		 	   height,
 		 	   content_type,
 		 	   lotation_x,
 		 	   lotation_y,
 		 	   start_date,
 		 	   end_date,
 		 	   use_yn,
-		 	   insert_date
+		 	   insert_date,
+		 	   (select concat(save_path, save_name) from file where process='popup' and kind ='File'  and ref=popup_no and file_ext in ('jpg','bmp','gif','png','jpeg') limit 1) thumbnail
 		 	   
 		
 		  from popup
 		 
-		 where	delete_yn='N'
+		 where 1=1
+		 and   delete_yn='N'
 		 <if test="searchKeyword != null and searchKeyword != '' ">
         	and ${searchType} like CONCAT('%', #{searchKeyword}, '%')
         	</if>
@@ -44,8 +48,9 @@
 		 	   title,
 		 	   content,
 		 	   process,
-		 	   delete_yn,
 		 	   content_type,
+		 	   width,
+		 	   height,
 		 	   lotation_x,
 		 	   lotation_y,
 		 	   start_date,
@@ -65,6 +70,8 @@
 				    content = #{content},
 				    lotation_x = #{lotationX},
 				    lotation_y = #{lotationY},
+				    width = #{width},
+				    height = #{height},
 				    start_date = #{startDate},
 				    end_date = #{endDate},
 				    use_yn = #{useYn},
@@ -80,6 +87,8 @@
 			    lotation_x = #{lotationX},
 			    lotation_y = #{lotationY},
 			    start_date = #{startDate},
+			    width = #{width},
+				height = #{height},
 			    end_date = #{endDate},
 			    use_yn = #{useYn},
 			    content_type=#{contentType},

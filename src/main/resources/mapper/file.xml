@@ -62,6 +62,6 @@
 	<update id="delete" parameterType="fileVO">
 		delete from	file
 		
-		   set	file_no = #{fileNo}
+		   where file_no = #{fileNo}
 	</update>
 </mapper>

@@ -8,6 +8,9 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 
+<style>
+
+</style>
 <div class="header"> 
 	<h1 class="page-header">
 		<small>Popup</small>
@@ -22,6 +25,7 @@
 				<div class="title"><!-- form --></div>
 			</div>
 		</div>
+		
 		<div class="panel-body">
 				
 			<table class="table table-bordered">
@@ -29,15 +33,33 @@
 					<col width="20%" />
 					<col width="80%" />
 				</colgroup>
-
+			
 				<tr>
 					<th>Title</th>
 					<td>${popupVO.title }</td>
 				</tr>
 				
 				<tr>
+					<th>ContentType</th>
+					<td>${popupVO.contentType}</td>
+				</tr>
+				
+				<tr>
 					<th>InsertDate</th>
 					<td>${popupVO.insertDate}</td>
+				</tr>
+				
+				<tr>
+					<th>View Size</th>
+					<td>X : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${popupVO.width}
+					Y : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${popupVO.height}</td>
+				</tr>
+				
+			
+				<tr>
+					<th>View Location</th>
+					<td>Width : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${popupVO.lotationX }
+					&nbsp;&nbsp;&nbsp;Height : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${popupVO.lotationY }</td>
 				</tr>
 				
 				
@@ -58,6 +80,11 @@
 	                    	</c:forEach>
 						</ul>
 					</td>
+				</tr>
+				
+				<tr>
+					<th>Use Status</th>
+					<td>${popupVO.useYn }</td>
 				</tr>
 			</table>
 			
@@ -85,7 +112,7 @@ function goList() {
 }
 
 
-function goForm(boardNo){
+function goForm(popupNo){
 	location.href='./popupForm?popupNo='+popupNo+'&'+window.location.search.substring(1);
 }
 

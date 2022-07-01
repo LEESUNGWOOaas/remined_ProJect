@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.level.admin.popup.service.PopupService;
 import com.level.vo.PopupVO;
@@ -22,6 +23,7 @@ public class PopupController {
 	public String list(PopupVO popupVO,Model model) throws Exception{
 		List<PopupVO> list = popupService.selectPopupList(popupVO);
 		model.addAttribute("list",list);
+		model.addAttribute("pageVO",popupVO.getPageVO());
 		return "popup/popupList.admin";
 	}
 	
@@ -42,9 +44,9 @@ public class PopupController {
 	
 	@ResponseBody
 	@RequestMapping("/admin/popup/save")
-	public Map<String, Object> save(PopupVO popupVO)throws Exception{
+	public Map<String, Object> save(PopupVO popupVO,MultipartHttpServletRequest multiPart)throws Exception{
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		int result = popupService.insert(popupVO);
+		int result = popupService.insert(popupVO,multiPart);
 		if(result>0) {
 			resultMap.put("result",true);
 			resultMap.put("msg","저장되었습니다.");
@@ -54,4 +56,18 @@ public class PopupController {
 		}
 		return resultMap;
 	}
-}
+	@ResponseBody
+	@RequestMapping("/admin/popup/delete")
+	public Map<String, Object> delete(PopupVO popupVO)throws Exception{
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		int result = popupService.delete(popupVO);
+		if(result>0) {
+			resultMap.put("result",true);
+			resultMap.put("msg","삭제했습니다.");
+		}else {
+			resultMap.put("result",false);
+			resultMap.put("msg","Error");
+		}
+		return resultMap;
+		}
+	}

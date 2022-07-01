@@ -71,7 +71,7 @@
 								<c:forEach var="item" items="${list }">
 								<tr>
 									<td>${rownum }</td>
-									<td class="text-left"><a onclick="view(${item.boardNo})">${item.title }</a></td>
+									<td class="text-left"><a onclick="view(${item.popupNo})">${item.title }</a></td>
 									<td><fmt:formatDate value="${item.insertDate }" pattern="yyyy-MM-dd"/> </td>
 									
 								</tr>
@@ -96,7 +96,7 @@ $("#group_sel").change(function(){
 
 	var params = $('#exposureForm').serialize();
 	$.ajax({
-		url:"/admin/popup/popupList/"+boardNo,
+		url:"/admin/popup/popupList/"+popupNo,
 		type:'post',
 		data:params,
 		success:function(response){

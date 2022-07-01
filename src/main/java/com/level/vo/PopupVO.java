@@ -1,12 +1,13 @@
 package com.level.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.apache.ibatis.type.Alias;
 
 @Alias("popupVO")
 public class PopupVO extends CommonVO{
-	private String process= "popup";
+	private String process = "popup";
 	
 	private int popupNo;
 	private String title;
@@ -14,13 +15,20 @@ public class PopupVO extends CommonVO{
 	private String lotationX;
 	private String lotationY;
 	private String useYn;
+	private String width;
+	private String height;
 	private String contentType;
 	private String startDate;
 	private String endDate;
 	private String deleteYn;
 	
+
+	private String thumbnail;
+	
 	Timestamp insertDate;
 
+	
+	
 	public int getPopupNo() {
 		return popupNo;
 	}
@@ -77,6 +85,27 @@ public class PopupVO extends CommonVO{
 		this.lotationY = lotationY;
 	}
 
+	
+	public String getWidth() {
+		return width;
+	}
+
+	public void setWidth(String width) {
+		this.width = width;
+	}
+
+	public String getHeight() {
+		return height;
+	}
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+	public void setProcess(String process) {
+		this.process = process;
+	}
+
 	public String getUseYn() {
 		return useYn;
 	}
@@ -111,6 +140,14 @@ public class PopupVO extends CommonVO{
 
 	public String getProcess() {
 		return process;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 	
 	

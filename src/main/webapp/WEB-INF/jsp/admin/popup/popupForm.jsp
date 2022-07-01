@@ -38,12 +38,12 @@
 					<tr>
 						<th>*Contents Type</th>
 						<td>
-							<div class="radio radio-inline radio-check radio-info">
-								<input type="radio" name="contentType" id="editor" title="editor" class="contentType" value="editor"${popupVO.contentType eq editor ? 'checked':empty popupVO? 'checked':'' } required>
+							<div class="radio3 radio-inline radio-check radio-info">
+								<input type="radio" name="contentType" id="editor" title="editor" class="contentType" value="editor"${popupVO.contentType eq 'editor' ? 'checked':empty popupVO ? 'checked': '' } >
 								<label for="editor">Editor</label>
-								</div>
-							<div class="radio radio-inline radio-check radio-info">
-								<input type="radio" name="contentType" id="image" title="image" class="contentType" value="image"${popupVO.contentType eq 'image'? 'checked':'' }  required>
+							</div>
+							<div class="radio3 radio-inline radio-check radio-info">
+								<input type="radio" name="contentType" id="image" title="image" class="contentType" value="image"${popupVO.contentType eq 'image'? 'checked':'' } >
 								<label for="image">Image</label>
 							</div>
 						</td>
@@ -55,16 +55,19 @@
 					</tr>
 					<tr>
 						<th>View Location</th>
-						<td>X&nbsp;<input type="text" name="lotationX" id="lotationX" style="width:20%; display:inline-block;" title="lotationX" class="form-control" value="">&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;<input type="text" name="lotationY" id="lotationY" style="width:20%; display:inline-block;" title="lotationY" class="form-control" value=""></td>
+						<td>X&nbsp;<input type="text" name="lotationX" id="lotationX" style="width:20%; display:inline-block;" title="lotationX" class="form-control" value="${popupVO.lotationX }">&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;<input type="text" name="lotationY" id="lotationY" style="width:20%; display:inline-block;" title="lotationY" class="form-control" value="${popupVO.lotationY }"></td>
 					</tr>
-					<tr class="contentType-editor" ${empty popupVO ||popupVO.contentType eq 'image'? 'hide':'' }>
+					<tr class="contentType-editor" ${popupVO.contentType eq 'image'? 'hide':'' }>
 						<th>*Contents</th>
 						<td ><textarea name="content" id="content" title="content" class="form-control"  required>${popupVO.content }</textarea></td>
 					</tr>
-					<tr class="contentType-image" ${empty popupVO ||popupVO.contentType eq 'editor'? 'hide':'' }>
+					
+					<tr class="contentType-image ${empty popupVO || popupVO.contentType eq 'editor'? 'hide':'' }">
 						<th>File</th>
 						<td><input type="file" name="File" id="File" title="File" class="form-control"></td>
+					</tr>
+					
 					<tr>
 						<th scope="row">Popup ExposureTime</th>
 						<td>
@@ -76,6 +79,14 @@
 						</td>
 					</tr>
 			
+					<tr>
+						<th>Use Status</th>
+							<td><input type="radio" name="useYn"  title="useYn-Y" id="useYn-Y" value="YES"${popupVO.useYn eq 'Y'? 'checked':'' }>
+							<label for="useYn-Y">&nbsp;YES&nbsp;&nbsp;</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="useYn"  title="useYn-X" id="useYn-X" value="NO"${popupVO.useYn eq 'X'? 'checked':'' }>
+							<label for="useYn-X">&nbsp;NO&nbsp;&nbsp;</label></td>
+					</tr>
 				</table>
 				
 				
@@ -96,16 +107,17 @@
 $(function(){
 	activeMenu('/admin/popup/popupList');
 	CKEDITOR.replace("content");
+
 	
 	
 	$(".contentType").change(function(){
 		var contentType = $(this).val();
 		if(contentType=='editor'){
-			$(".contentType-content").removeClass("hide");//selectType-content클래스의 hide기능 제거
+			$(".contentType-editor").removeClass("hide");//selectType-content클래스의 hide기능 제거
 			$(".contentType-image").addClass("hide");//selectType-image클래스의 hide기능 추가
 		}else if(contentType=='image'){
 			$(".contentType-image").removeClass("hide");
-			$(".contentType-content").addClass("hide");
+			$(".contentType-editor").addClass("hide");
 		} 
 	});
 	
@@ -125,10 +137,19 @@ function cancel(){
 		
 
 function save(){
+	
 	$('#content').val(CKEDITOR.instances.content.getData());
 			
 			var userId = $('#title').val();
 			var userName = $('#content').val();
+			var contentType = $('#contentType').val();
+			var lotationX = $('#lotationX').val();
+			var lotationY = $('#lotationY').val();
+			var width = $('#width').val();
+			var height = $('#height').val();
+			var file = $('#file').val();
+			var startDate = $('#startDate').val();
+			var endDate = $('#endDate').val();
 			
 			
 			
@@ -141,7 +162,14 @@ function save(){
 				return;
 			}
 			
-		
+			if(startDate = ""){
+				alert("시작 기간을 정해주세요.");
+				return;
+			}
+			if(endDate=""){
+				alert("종료 기간을 정해주세요.");
+				return;
+			}
 		
 			
 			var form = $('#regForm')[0];
@@ -152,7 +180,7 @@ function save(){
 				type: 'POST',
 				data: formData,
 				enctype: 'multipart/form-data',
-		        processData: false,
+		        processData: false,     
 		        contentType: false,		
 				success: function(response) {
 					console.log(response);
@@ -162,20 +190,6 @@ function save(){
 				}
 			}
 		}); 
-		/* var param = $('#regForm').serialize();
 		
-			$.ajax({
-			    url : "/admin/popup/save",
-				type: 'POST',
-				data: param,
-				dataType: 'json',
-				success: function(response) {
-					console.log(response);
-					alert(response.msg);
-					if(response.result){
-						goList();
-					}
-				}
-			}); */
 }
 </script>
