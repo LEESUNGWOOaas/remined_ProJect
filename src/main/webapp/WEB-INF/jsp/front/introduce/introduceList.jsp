@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-<jsp:include page="/WEB-INF/jsp/layout/front/other/nav.jsp"/>
+<jsp:include page="/WEB-INF/jsp/layout/front/nav.jsp"/>
 <div class="masthead">
           <img alt="top" src="/assets/front/assets/img/bg-masthead22.jpg">
           <div class="">
