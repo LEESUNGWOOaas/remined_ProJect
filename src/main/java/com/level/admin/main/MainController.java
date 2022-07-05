@@ -11,7 +11,7 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping({"","/","/admin"})
+	@RequestMapping({"/admin"})
 	public String index(){
 		return  "redirect:/admin/main";
 	}
