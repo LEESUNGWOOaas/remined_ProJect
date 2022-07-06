@@ -21,6 +21,7 @@ public class FrontBoardController {
 	
 	@RequestMapping("/front/board/boardList")
 	public String list(BoardVO boardVO,Model model)throws Exception{
+		boardVO.setListSize(3);
 		List<BoardVO> list = boardService.selectBoardList(boardVO);
 		model.addAttribute("list",list);
 		model.addAttribute("pageVO",boardVO.getPageVO());
