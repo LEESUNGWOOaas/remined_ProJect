@@ -13,6 +13,7 @@ public class BoardVO extends CommonVO{
 	private String title;
 	private String content;
 	private String deleteYn;
+	private String userId;
 	private int fileNo;
 	private String thumbnail;
 	
@@ -49,6 +50,14 @@ public class BoardVO extends CommonVO{
 
 	public void setDeleteYn(String deleteYn) {
 		this.deleteYn = deleteYn;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Timestamp getInsertDate() {

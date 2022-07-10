@@ -24,6 +24,7 @@
 		<div class="panel-body">
 			<form id="regForm" class="form-horizontal" >
 				<input type="hidden" name="boardNo" value="${empty boardVO? 0:boardVO.boardNo }">
+				<input type="hidden" name="userId" value="${currentUser.userId}">
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="20%" />

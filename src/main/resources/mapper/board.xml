@@ -5,6 +5,7 @@
 			select board_no,
 				title,
 				content,
+				user_id,
 				process,
 				insert_date,
 				(select concat(save_path, save_name) from file where process='board' and kind ='File'  and ref=board_no and file_ext in ('jpg','bmp','gif','png','jpeg') limit 1) thumbnail
@@ -37,6 +38,7 @@
 			select board_no,
 				   title,
 				   content,
+				   user_id,
 				   delete_yn,
 				   insert_date,
 				   process
@@ -52,6 +54,7 @@
 			
 				set title = #{title},
 					content = #{content},
+					user_id = #{userId},
 					insert_date = now()
 		</insert>
 		
@@ -60,6 +63,7 @@
 			
 			set	   title = #{title},
 				   content = #{content},
+				 	user_id = #{userId},
 				   insert_date = now()
 			
 			where  board_no =#{boardNo}

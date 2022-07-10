@@ -209,9 +209,14 @@ b,
 strong {
   font-weight: bolder;
 }
-
+/*footer*/
 small, .small {
   font-size: 0.875em;
+  
+}
+body-content, .body-content{
+	min-height: 100%;
+    position: relative;
 }
 
 mark, .mark {
@@ -4800,6 +4805,8 @@ textarea.form-control-lg {
   display: flex;
   padding-left: 0;
   list-style: none;
+  padding : 15px;
+  justify-content:center;
 }
 
 .page-link {
@@ -7838,8 +7845,13 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #C0C0C0 !important;
+  padding : 1px; 
+  position : absolute;
+  left:0;
+  width:100%;
+
+
 }
 
 .bg-dark {

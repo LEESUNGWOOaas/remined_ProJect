@@ -4,36 +4,46 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+ <link href="/assets/front/css/styles2.css" rel="stylesheet" />
 
 <div class="masthead">
 	<img alt="top" src="/assets/front/assets/img/bg-masthead22.jpg">
 		<div class="container">
-			<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+			<button class="btn btn-secondary" style="float: right;" onclick="history.back()">돌아가기</button>
 		<br /> <br />
 	<div>
-		글 번호 :<span id="id"><i>${boardVO.boardNo} </i></span> 작성자 :<span><i>${board.user.username} </i></span>
+		글 번호 :<span id="id"><i>${boardVO.boardNo} </i></span> 작성자 : <span><i>${boardVO.userId} </i></span>
 	</div>
 	<br />
 	<div class="form-group">
 		<label for="title">Title</label>
+		<br/><br/><br/>
 		<h3>${boardVO.title }</h3>
+		<br/><br/>
 	</div>
 	
-	<div class="card">
+ 	<div class="card">
 	<form>
-		<%-- <input type="hidden" id="userId" value="${boardVO.userId}"/> --%>
-		<input type="hidden" id="boardId" value="${boardVO.boardNo }"/>
-		<div class="card-body">
+		<h2>${boardVO.content }</h2>
+		
+		
+
+	<!-- 	<div class="card-body">
 			<textarea id="reply-content" class="form-control" rows="1"></textarea>
 		</div>
 		<div class="card-footer">
 			<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
-		</div>
+		</div> -->
 		</form>
+		
+		</div>
+		</div>
+		
 	</div>
+
 	<br />
 	
-	<div class="card">
+<%-- 	<div class="card">
 		<div class="card-header">댓글 리스트</div>
 			<ul id="reply-box" class="list-group">
 				<c:forEach var="reply" items="${boardVO.reply}">
@@ -46,11 +56,11 @@
 					</li>
 				</c:forEach>
 			</ul>
-		</div>
-	
-		</div>
-</div>
-<jsp:include page="/WEB-INF/jsp/layout/common/paging-front.jsp"/>
+		</div> --%>
 
 
-<jsp:include page="/WEB-INF/jsp/layout/front/footer.jsp"/>
+
+	<jsp:include page="/WEB-INF/jsp/layout/front/other/footer.jsp"/>
+<script>
+CKEDITOR.replace("content");
+</script>
